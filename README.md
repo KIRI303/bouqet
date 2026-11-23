@@ -26,7 +26,7 @@ python bouqet.py
 
 if that doesn't work, try `python3 bouqet.py` instead. some computers use that one, idk why
 
-that's it!! nothing to install.
+that's it! nothing to install.
 
 to stop it press **`q`** (`ctrl+c` works too).
 
@@ -118,7 +118,7 @@ if you want different flowers:
 - the colors are lists of numbers at the top of the file. those are terminal color codes, from dark to light. you can look up "256 color chart" to find more
 - if you change the number in `random.Random(21)`, the flowers end up in different spots. fun to try different numbers!
 
-## how does it work??
+## how does it work?
 
 honestly i'm not great at explaining this part haha, but basically:
 
