@@ -1,6 +1,6 @@
 💐 bouquet
-a bouquet, written in code (i think?? haha)
-hi!! so this is a bouquet that spins around in your terminal. it blooms, it rotates, and it types out little messages at the bottom. the whole thing is made out of text characters lol. it's just one python file and you don't have to install anything.
+a bouquet, written in code (kinda? haha)
+hello! so this is a bouquet that spins around in your terminal. it blooms, it rotates, and it types out little messages at the bottom. the whole thing is made out of text characters lol. it's just one python file and you don't have to install anything.
 > quick note: i'm not a cs or it student. i just got bored and hyperfixated on this for way too long. so sorry if my explanations are awkward haha, i tried my best
 <img width="800" height="544" alt="demo (1)" src="https://github.com/user-attachments/assets/546bafb9-9041-4ccb-af44-45d6fc1b4998" />
 ---
