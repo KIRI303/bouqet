@@ -89,6 +89,6 @@ the hearts look like `?` or little boxes: your terminal can't show `♥`. on win
 the colors look weird or dull: try typing `export TERM=xterm-256color` before running it
 it's laggy: make the window smaller, or lower the fps like `BOUQUET_FPS=15`
 everything looks tiny or blocky: make the window bigger, or zoom the terminal out
-the keys don't do anything: the keys only work in a normal interactive terminal. if you started it some other way it'll still play, you just can't press keys
-license
-MIT © 2026 Red Ivan Clay
+the keys don't do anything: the keys only work in a normal interactive terminal. if you started it some other way it'll still play, you just can't press keys.
+haha stay golden sunshines ! i'll see you guys around.
+© 2026 Red Ivan Clay
