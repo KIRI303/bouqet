@@ -46,7 +46,7 @@ def _env_flag(name, default):
     return value.strip().lower() not in ("0", "false", "no", "off", "")
 
 
-TO_NAME = _env_text("BOUQUET_TO", "..")  
+TO_NAME = _env_text("BOUQUET_TO", "A")  
 FROM_NAME = _env_text("BOUQUET_FROM", "Red Ivan Clay")
 SIGNATURE = _env_text("BOUQUET_SIGNATURE", "this is what happens when i hyperfixate/get bored lmao by " + FROM_NAME + ",,,")
 
@@ -298,13 +298,13 @@ def build_scene(density=1.0):
                 break
         placed.append((pos, R))
         slots.append((kind, pal, R, pos, d))
-    slots.sort(key=lambda s: s[4][1])  # low flowers bloom first, the crown last
+    slots.sort(key=lambda s: s[4][1])  
 
     flowers = []
     for rank, (kind, pal, R, pos, d) in enumerate(slots):
         axis = norm((d[0] + rnd.uniform(-0.18, 0.18), d[1] + rnd.uniform(-0.08, 0.20),
                      d[2] + rnd.uniform(-0.18, 0.18)))
-        # stem: only the part that shows above the paper
+        
         base = add(pos, axis, -0.03)
         if base[1] > STEM_CUT:
             tcut = (base[1] - STEM_CUT) / (base[1] - NECK[1])
@@ -313,7 +313,7 @@ def build_scene(density=1.0):
                 tt = tcut * j / (ns - 1)
                 P(base[0] + (NECK[0] - base[0]) * tt, base[1] + (NECK[1] - base[1]) * tt,
                   base[2] + (NECK[2] - base[2]) * tt, (axis[0], 0.0, axis[2]), GREENS, -0.25)
-        if kind == HYDRA:  # a puffy ball of tiny blue florets
+        if kind == HYDRA:  
             for _ in range(n1(70)):
                 v = norm((rnd.gauss(0, 1), rnd.gauss(0, 1), rnd.gauss(0, 1)))
                 q = add(pos, v, R * rnd.uniform(0.78, 1.0))
@@ -322,14 +322,14 @@ def build_scene(density=1.0):
         flowers.append(Flower(kind, pos, axis, pal, R, rnd.uniform(0, 6.28),
                               0.45 + rank * 0.085 + rnd.uniform(0, 0.12)))
 
-    # ------------------------------------------------------------------ foliage
+   
     def leaf(q, e, f, ln, wd, tone):
         n = norm(cross(e, f))
         for a, b in LEAF_OFFS:
             P(q[0] + e[0] * a * ln + f[0] * b * wd, q[1] + e[1] * a * ln + f[1] * b * wd,
               q[2] + e[2] * a * ln + f[2] * b * wd, n, EUCALYPTUS, tone - 0.10 + 0.10 * a - 0.05 * abs(b))
 
-    # eucalyptus sprays drooping out between the flowers
+   
     for i in range(10):
         az = (i + rnd.uniform(0.0, 0.8)) / 10 * 2 * math.pi
         c, s = math.cos(az), math.sin(az)
@@ -357,7 +357,7 @@ def build_scene(density=1.0):
                 q = add(p, e, 0.03)
                 leaf(q, e, f, 0.062 - 0.012 * k / 5, 0.034, rnd.uniform(-0.08, 0.08))
 
-    # big glossy leaves hugging the rim of the wrap
+   
     for i in range(8):
         a = (i + 0.5) / 8 * 2 * math.pi + rnd.uniform(-0.1, 0.1)
         c, s = math.cos(a), math.sin(a)
@@ -369,7 +369,7 @@ def build_scene(density=1.0):
         nu, nv = n1(24), n1(9) | 1
         for ti in range(nu):
             t = ti / (nu - 1)
-            wid = W * math.sin(math.pi * t ** 0.85) * (1 + 0.10 * math.sin(26 * t))  # serrated edge
+            wid = W * math.sin(math.pi * t ** 0.85) * (1 + 0.10 * math.sin(26 * t))  
             for wi in range(nv):
                 w = wi / (nv - 1) * 2 - 1
                 rib = 0.22 if wi == nv // 2 else 0.0
@@ -378,7 +378,7 @@ def build_scene(density=1.0):
                   base[2] + d[2] * Ll * t + side[2] * wid * w + n[2] * 0.03 * w * w,
                   n, GREENS, rib - 0.28 - 0.15 * abs(w))
 
-    # lavender sprigs poking out of the top
+    
     for i in range(7):
         az = i / 7 * 2 * math.pi + rnd.uniform(-0.3, 0.3)
         el = math.radians(rnd.uniform(48, 80))
@@ -397,7 +397,7 @@ def build_scene(density=1.0):
                 q = add(add(add(CEN, d, rr), bu, off * math.cos(ang_k)), bv, off * math.sin(ang_k))
                 P(q[0], q[1], q[2], d, LAVENDER, rnd.uniform(-0.1, 0.12), False, ";" if k else ":", 0.01)
 
-    # ------------------------------------------------------------------ the wrap
+   
     rings = n1(52)
     two_pi = 2 * math.pi
     for i in range(rings):
@@ -408,15 +408,15 @@ def build_scene(density=1.0):
             ph = (j + rnd.random() * 0.9) / cnt * two_pi
             c, s = math.cos(ph), math.sin(ph)
             cuff = t > 0.9
-            rr = r * (1.0 + 0.05 * (0.3 + 0.7 * t) * math.sin(7 * ph + 1.3 * t))  # pleats
+            rr = r * (1.0 + 0.05 * (0.3 + 0.7 * t) * math.sin(7 * ph + 1.3 * t))  
             if cuff:
-                rr *= 1.0 + 0.08 * (t - 0.9) / 0.1  # the folded-over, flared collar
-            y = Y0 + (Y1 - Y0) * t + 0.045 * (abs(math.sin(5 * ph + 0.3)) - 0.55) * t ** 4  # scalloped rim
+                rr *= 1.0 + 0.08 * (t - 0.9) / 0.1  
+            y = Y0 + (Y1 - Y0) * t + 0.045 * (abs(math.sin(5 * ph + 0.3)) - 0.55) * t ** 4  
             d = (ph - (0.7 + 2.1 * t) + math.pi) % two_pi - math.pi
             tone = 0.30 + 0.17 * math.cos(7 * ph + 1.3 * t) - 0.14 * (1 - t)
             if cuff:
                 pal, tone = PAPER_CREAM, tone + 0.10
-            elif abs(d) < 0.55:  # the overlapping flap of paper
+            elif abs(d) < 0.55:  
                 pal = PAPER_LAV
                 if abs(abs(d) - 0.55) < 0.05:
                     tone += 0.30
@@ -424,7 +424,7 @@ def build_scene(density=1.0):
                 pal = PAPER_PINK
             P(rr * c, y, rr * s, norm((c, -KC, s)), pal, tone)
 
-    # little printed hearts all over the pink paper
+    
     for k in range(7):
         t = 0.14 + 0.11 * k
         r = R0 + (R1 - R0) * t
@@ -438,7 +438,7 @@ def build_scene(density=1.0):
             rr = r * (1.0 + 0.05 * (0.3 + 0.7 * t) * math.sin(7 * ph + 1.3 * t)) * 1.012
             P(rr * c, Y0 + (Y1 - Y0) * t, rr * s, norm((c, -KC, s)), HEART_PRINT, 0.30, False, HEART, 0.03)
 
-    # two layers of crinkly tissue paper flaring out of the top
+    
     def collar(ya, yb, ra, rb, nrings, k_cnt, pal, crink, rim_amp, phase):
         nr = n1(nrings)
         slope = (rb - ra) / (yb - ya)
@@ -457,7 +457,7 @@ def build_scene(density=1.0):
     collar(0.24, 0.45, 0.34, 0.66, 18, 120, TISSUE, 0.07, 0.07, 0.4)
     collar(0.24, 0.56, 0.32, 0.50, 14, 100, TISSUE_LAV, 0.06, 0.06, 2.0)
 
-    # ------------------------------------------------------------------ satin ribbon + bow
+   
     br = cone_r(BY) + 0.012
     nb = n1(110)
     for j in range(nb):
@@ -499,7 +499,7 @@ def build_scene(density=1.0):
             p = bow((i / 5 * 2 - 1) * 0.030, (j / 5 * 2 - 1) * 0.026, 0.020)
             P(p[0], p[1], p[2], nB, RIBBON, 0.40 - 0.08 * j / 5, True, None, 0.02)
 
-    # ------------------------------------------------------------------ cut stems + twine below the cone
+   
     for i in range(9):
         a = i / 9 * two_pi + rnd.uniform(-0.2, 0.2)
         ca_, sa_ = math.cos(a), math.sin(a)
@@ -516,8 +516,8 @@ def build_scene(density=1.0):
             ph = j / 24 * two_pi
             P(0.055 * math.cos(ph), yy, 0.055 * math.sin(ph), (math.cos(ph), 0.0, math.sin(ph)), TWINE, 0.25, True, None, 0.02)
 
-    # ------------------------------------------------------------------ sparkle layers
-    babies = []  # baby's breath
+   
+    babies = []  
     for _ in range(n1(130)):
         a = rnd.random() * two_pi
         el = rnd.uniform(0.15, 1.45)
@@ -530,7 +530,7 @@ def build_scene(density=1.0):
         rr = rnd.uniform(0.80, 1.05)
         sparkles.append((rr * math.cos(a), rnd.uniform(-0.3, 1.0), rr * math.sin(a),
                          rnd.uniform(0, 6.28), rnd.uniform(1.5, 4.0)))
-    flies = []  # fireflies orbiting the bouquet
+    flies = []  
     for _ in range(12):
         flies.append((rnd.uniform(0.85, 1.15), rnd.uniform(-0.2, 0.9), rnd.uniform(0.4, 0.9) * rnd.choice((-1, 1)),
                       rnd.uniform(0, 6.28)))
@@ -562,7 +562,7 @@ def dynamic_points(t, K):
                 out.append((x, y, z, nn[0], nn[1], nn[2], RIBBON, 0.28 + 0.2 * math.sin(5 * u + side) + 0.08 * (1 - abs(v)),
                             True, None, 0.015))
     nc = max(14, int(28 * K))
-    for k in range(4):  # curly ribbon
+    for k in range(4):  
         side = -1 if k % 2 == 0 else 1
         ph0 = k * 1.3
         for i in range(nc):
@@ -845,7 +845,7 @@ def render(scene, t, ang, cols, rows, view_rows, scale, hearts, petals, msg, hin
         f = CAM_DIST / (CAM_DIST - zt)
         return int(cx + xr * f * sxs), int(cy - yt * f * scale), zt
 
-    # --- backdrop: twinkling stars, falling hearts and drifting petals
+   
     for sx_, sy_, ph, spd in scene.stars:
         tw = math.sin(t * spd + ph)
         col, row = int(sx_ * cols), int(sy_ * view_rows)
@@ -871,7 +871,7 @@ def render(scene, t, ang, cols, rows, view_rows, scale, hearts, petals, msg, hin
     draw_points(scene.pts, cam, zbuf, chars, colors, view_rows, cols)
     draw_points(dynamic_points(t, scene.K), cam, zbuf, chars, colors, view_rows, cols)
 
-    # --- baby's breath, orbiting fireflies, sparkles
+ 
     show = 1.0 if not INTRO else min(1.0, max(0.0, (t - 2.5) / 2.0))
     if show > 0:
         for i, (x, y, z, phase) in enumerate(scene.babies):
@@ -896,7 +896,7 @@ def render(scene, t, ang, cols, rows, view_rows, scale, hearts, petals, msg, hin
                 col, row, zt = project(rad * math.cos(a), yy, rad * math.sin(a))
                 plot(col, row, zt + 0.1, chh, colr)
 
-    # --- text: name, message, signature
+
     shift = int(t * 8)
     if TO_NAME:
         label = "for " + TO_NAME
@@ -907,7 +907,7 @@ def render(scene, t, ang, cols, rows, view_rows, scale, hearts, petals, msg, hin
                 colors[0][st0 + i] = MSG_COLORS[(i + shift) % len(MSG_COLORS)]
     if hint > 0 and cols >= 70:
         txt = "space pause  \u00b7  +/- spin  \u00b7  r reverse  \u00b7  n next  \u00b7  q quit"
-        limit = cols - 1 if not TO_NAME else (cols - len(TO_NAME)) // 2 - 8  # don't collide with "for <name>"
+        limit = cols - 1 if not TO_NAME else (cols - len(TO_NAME)) // 2 - 8  
         for i, ch in enumerate(txt):
             if ch != " " and i + 1 < limit:
                 chars[0][i + 1] = ch
@@ -941,7 +941,7 @@ def render(scene, t, ang, cols, rows, view_rows, scale, hearts, petals, msg, hin
             chars[rows - 1][sstart + i] = ch
             colors[rows - 1][sstart + i] = pulse
 
-    # --- turn the grids into one string of ANSI colour codes
+   
     out_lines = []
     for r in range(rows):
         rc, rcol = chars[r], colors[r]
@@ -957,9 +957,7 @@ def render(scene, t, ang, cols, rows, view_rows, scale, hearts, petals, msg, hin
     return "\033[H" + "\n".join(out_lines) + RESET
 
 
-# =============================================================================
-#  background particles, typing effect, keyboard
-# =============================================================================
+
 def update_particles(hearts, petals, dt):
     while len(hearts) < NUM_HEARTS:
         hearts.append([random.random(), random.uniform(0.0, 1.25), random.uniform(0.03, 0.08),
@@ -1048,13 +1046,11 @@ class Keys:
         return out
 
 
-# =============================================================================
-#  main loop
-# =============================================================================
+
 def main():
     """Run the bouquet animation and restore terminal state on exit."""
     if os.name == "nt":
-        os.system("")  # Enable ANSI escape handling on modern Windows terminals.
+        os.system("")  
     try:
         sys.stdout.reconfigure(encoding="utf-8")
     except (AttributeError, OSError):
@@ -1067,7 +1063,7 @@ def main():
     msg_i, msg_t0 = 0, (0.9 if INTRO else 0.3)
     previous_size = None
 
-    sys.stdout.write("\033[?1049h\033[?25l\033[2J\033[H")  # alt screen, hide cursor, clear
+    sys.stdout.write("\033[?1049h\033[?25l\033[2J\033[H")  
     sys.stdout.flush()
     start = last = time.perf_counter()
 
