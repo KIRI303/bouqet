@@ -47,7 +47,7 @@ def _env_flag(name, default):
 
 
 TO_NAME = _env_text("BOUQUET_TO", "..")  
-FROM_NAME = _env_text("BOUQUET_FROM", "Red Ivan Clay M. Castillon")
+FROM_NAME = _env_text("BOUQUET_FROM", "Red Ivan Clay")
 SIGNATURE = _env_text("BOUQUET_SIGNATURE", "this is what happens when i hyperfixate/get bored lmao by " + FROM_NAME + ",,,")
 
 
