@@ -139,6 +139,33 @@ no extra libraries or anything, it's only python's built-in stuff.
 
 **everything looks tiny or blocky:** make the window bigger, or zoom the terminal out
 
+## see the original bouquet in a browser
+
+The browser version runs the original `bouqet.py` inside a real pseudo-terminal and streams its ANSI output to xterm.js. That means the web page shows the same ASCII flowers, colors, bloom timing, and controls as the terminal program instead of a separate redraw. Each visitor gets their own bouquet session.
+
+The web version needs a small Python server because static hosting such as GitHub Pages cannot run the Python program or provide a terminal session.
+
+### run it locally
+
+The Python server needs a few packages. A virtual environment avoids installing them into your system Python (especially on Arch Linux):
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python server.py
+```
+
+Then visit `http://localhost:8000`. The terminal controls work in the browser: **space** pauses, **+ / -** changes speed, **r** reverses, **n** skips a note, and **q** ends the session.
+
+### publish it for others
+
+Deploy this repository as a Python web service on a host that supports WebSockets. For example, on Render create a **Web Service** for the repository and set:
+
+- Build command: `pip install -r requirements.txt`
+- Start command: `gunicorn --workers 1 --threads 16 --bind 0.0.0.0:$PORT server:app`
+
+After deployment, share the service URL. The page and its terminal connection use the same host. Render's web services support public WebSocket connections ([deployment docs](https://render.com/docs/websocket)).
+
 **the keys don't do anything:** the keys only work in a normal interactive terminal. if you started it some other way it'll still play, you just can't press keys
 
 ## license

@@ -54,8 +54,8 @@ SIGNATURE = _env_text(
 
 
 MESSAGES = [
-    "Here a beautiful bouquet to beautiful a lady.",
-    "वास्तवमा फूल दिन त नसके पनि, यसरी दिन सक्छु।.",
+    "Here a beautiful bouquet to a beautiful lady.",
+    "Real ma ful dina nasake ni yesari chai sakxu.",
     "roses are #ff005f, violets are #af87ff, i built this whole bouquet in code because i was so very bored,,, argh",
     "no water, no sunlight, just a little python",
     "",

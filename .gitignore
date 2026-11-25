@@ -1,0 +1,41 @@
+# Python environments and generated files
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+coverage.xml
+.coverage
+htmlcov/
+
+# Local environment settings and credentials
+.env
+.env.*
+!.env.example
+.aws/
+.azure/
+.gcloud/
+.kube/
+.ssh/
+.docker/
+.netrc
+.pypirc
+.npmrc
+secrets/
+credentials/
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+*-service-account*.json
+*-credentials.json
+
+# Local logs and editor/OS files
+*.log
+.DS_Store
+Thumbs.db

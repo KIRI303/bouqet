@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff8f7" />
+    <meta name="description" content="A bouquet that blooms and spins, drawn in the terminal and shared on the web." />
+    <title>A bouquet, written in code</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/css/xterm.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="site-header">
+        <a class="wordmark" href="#top" aria-label="A bouquet, written in code">
+          <span class="wordmark-flower" aria-hidden="true">✿</span>
+          <span>little things, in bloom</span>
+        </a>
+        <span class="edition">A small digital gift <span>·</span> 2026</span>
+      </header>
+
+      <section class="bouquet-card" id="top" aria-labelledby="page-title">
+        <div class="card-copy">
+          <p class="eyebrow"><span></span> a bouquet, written in code</p>
+          <h1 id="page-title">A little bloom<span class="title-period">.</span></h1>
+          <p class="intro">The original bouquet, drawn one terminal character at a time.</p>
+        </div>
+
+        <div class="terminal-frame" aria-label="Interactive terminal showing the animated bouquet">
+          <div class="terminal-toolbar">
+            <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span class="terminal-label">bouqet.py</span>
+            <span class="connection-status" id="status"><i></i><span>connecting</span></span>
+          </div>
+          <div id="terminal" class="terminal" aria-label="Animated ASCII bouquet"></div>
+        </div>
+
+        <p class="keyboard-hint">space pause <span>·</span> + / − speed <span>·</span> r reverse <span>·</span> n next note <span>·</span> q quit</p>
+
+        <div class="card-footer">
+          <p class="signature"><span>made with care,</span><strong>one line at a time</strong></p>
+          <span class="footer-stamp" aria-hidden="true">✿ &nbsp; CODED WITH LOVE</span>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <span>Flowers fade. This one keeps turning.</span>
+        <span class="footer-sparkle" aria-hidden="true">✳</span>
+        <span>Made one petal at a time</span>
+      </footer>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/lib/xterm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10.0/lib/addon-fit.js"></script>
+    <script src="app.js" defer></script>
+  </body>
+</html>
