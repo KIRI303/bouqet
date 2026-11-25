@@ -9,7 +9,7 @@ hi! so this is a bouquet that spins around in your terminal. it blooms, it rotat
 
 > i liked this project so much that i forked it and changed a few of the messages to make it a gift for someone special. i wanted to share my version too, in case you'd like to make a bouquet for someone you care about
 
-<img width="800" height="544" alt="demo (1)" src="https://github.com/user-attachments/assets/1985b168-bff0-4c42-a582-7f6cd94fb980" />
+![The bouquet from this fork blooming and spinning in the terminal](assets/bouquet-demo.gif)
 
 
 ---
