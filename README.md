@@ -7,7 +7,7 @@ hi! so this is a bouquet that spins around in your terminal. it blooms, it rotat
 
 > quick note: i'm not a cs or it student. i just got bored and hyperfixated on this for way too long. so sorry if my explanations are awkward haha, i tried my best
 
-> also! fun fact: i only made this for one special someone haha. it was never supposed to be a  public thing haha. so i'm sharing the code in case you want to make one for your special someone too
+> i liked this project so much that i forked it and changed a few of the messages to make it a gift for someone special. i wanted to share my version too, in case you'd like to make a bouquet for someone you care about
 
 <img width="800" height="544" alt="demo (1)" src="https://github.com/user-attachments/assets/1985b168-bff0-4c42-a582-7f6cd94fb980" />
 
